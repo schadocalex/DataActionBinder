@@ -1,0 +1,4 @@
+dist/exploded
+node_modules
+.idea
+*.log
