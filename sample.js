@@ -7,6 +7,10 @@ var DataActionBinder = require("./src/DataActionBinder");
 
 $(document).ready(function() {
     var dataActionBinder = new DataActionBinder("ctn", require("./Evaluator"));
-    dataActionBinder.update({size: 100});
-    dataActionBinder.update({size: 101});
+    dataActionBinder.update({
+        size: 100,
+        largeur: 200,
+        hauteur: 100,
+        color: "9006"
+    });
 });

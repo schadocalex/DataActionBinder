@@ -7,8 +7,10 @@
 </head>
 <body>
     <div id="ctn" >
-        <div data-action="class:EqualTo100:{size.$eq.100}" ></div>
-        <div data-action="class:GreaterThan100:{size.$gt.100}" ></div>
+        <div data-action="class : EqualTo100 : (size $eq 100)" ></div>
+        <div data-action="attr : height : `size * 2`" ></div>
+        <div data-action="class : color : (color $in ['9005', '9006'])" ></div>
+        <div data-action="class : BigAnd9006 : ($or (largeur $gt `100 / hauteur`) (color $eq '9006'))" ></div>
     </div>
 </body>
 </html>

@@ -4,7 +4,8 @@
   "description": "Data action binder. Parse all \"data-action-*\" attributes in the DOM and bind them.",
   "main": "dist/data-action-binder.js",
   "dependencies": {
-    "jquery": "^3.0.0"
+    "jquery": "^3.0.0",
+    "mathjs": "^3.2.1"
   },
   "devDependencies": {
     "babel-cli": "^6.10.1",
