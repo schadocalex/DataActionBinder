@@ -77827,9 +77827,14 @@ var DataActionBinder = function () {
             $(document.getElementById(this.ctnId)).find("*") // Get all children
             .dataStartsWithForEach("action", function (el, attrValue, attrLabel) {
                 // Compute math
-                attrValue = attrValue.replace(REGEXP_MATH, function (m, $1) {
-                    return math.eval($1, ctx);
-                });
+                try {
+                    attrValue = attrValue.replace(REGEXP_MATH, function (m, $1) {
+                        return math.eval($1, ctx);
+                    });
+                } catch (e) {
+                    console.warn(attrValue + " can't be computed, a math expression is not valid. Please check that every variable exists.");
+                    return;
+                }
 
                 // Split parameters
                 var values = attrValue.match(REGEXP_DATA_ACTION_ATTR);
