@@ -6,7 +6,7 @@ var $ = require("jquery");
 var DataActionBinder = require("./src/DataActionBinder");
 
 $(document).ready(function() {
-    var dataActionBinder = new DataActionBinder("ctn", require("./Evaluator"));
+    var dataActionBinder = new DataActionBinder("ctn", require("./Evaluator"), require("mathjs"));
     dataActionBinder.update({
         size: 100,
         largeur: 200,

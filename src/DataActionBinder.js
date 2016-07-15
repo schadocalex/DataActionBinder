@@ -1,6 +1,5 @@
 
 var $ = require("jquery");
-var math = require("mathjs");
 
 const REGEXP_DATA_ACTION_ATTR = /^\s*(.+?)\s*:\s*(.+?)\s*:\s*(.+?)\s*$/;
 const REGEXP_GROUP_OP = /\(\s*(\$\w+)(.+)\)/;
@@ -21,9 +20,10 @@ $.fn.dataStartsWithForEach = function(p, fn) {
 };
 
 class DataActionBinder {
-    constructor(ctnId, _Filter) {
+    constructor(ctnId, _Filter, _Math) {
         this.ctnId = ctnId;
         this.Filter = _Filter;
+        this.Math = _Math;
     }
 
     update(ctx) {
@@ -31,7 +31,7 @@ class DataActionBinder {
             .dataStartsWithForEach("action", (el, attrValue, attrLabel) => {
                 // Compute math
                 try {
-                    attrValue = attrValue.replace(REGEXP_MATH, (m, $1) => math.eval($1, ctx));
+                    attrValue = attrValue.replace(REGEXP_MATH, (m, $1) => this.Math.eval($1, ctx));
                 }
                 catch(e) {
                     console.warn(attrValue + " can't be computed, a math expression is not valid. Please check that every variable exists.");
@@ -48,7 +48,7 @@ class DataActionBinder {
                         try {
                             var filterData = this._convertInputToFilterData(values[3]);
                             var filter = new this.Filter(filterData);
-                            check = filter.check(ctx)
+                            check = filter.match ? filter.match(ctx) : filter.check(ctx);
                         }
                         catch (e) {
                             check = false;
