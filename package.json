@@ -1,6 +1,6 @@
 {
   "name": "data-action-binder",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Data action binder. Parse all 'data-action*' attributes in the DOM and bind them.",
   "main": "src/DataActionBinder.js",
   "dependencies": {
@@ -8,7 +8,6 @@
   },
   "devDependencies": {
     "babel-cli": "^6.10.1",
-    "babel-polyfill": "^6.9.1",
     "babel-preset-es2015": "^6.9.0",
     "babelify": "^7.3.0",
     "browserify": "^13.0.1",
@@ -16,7 +15,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sample": "browserify sample.js -o dist/sample.js -t [ babelify --presets [ es2015 ] ]"
+    "sample": "browserify -t babelify sample.js -o dist/sample.js",
+    "build": "browserify -t babelify src/DataActionBinder.js -o dist/DataActionBinder.js"
   },
   "repository": {
     "type": "git",
