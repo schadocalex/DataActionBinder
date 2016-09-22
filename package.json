@@ -1,8 +1,8 @@
 {
   "name": "data-action-binder",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Data action binder. Parse all 'data-action*' attributes in the DOM and bind them.",
-  "main": "src/DataActionBinder.js",
+  "main": "dist/DataActionBinder.js",
   "dependencies": {
     "jquery": "^3.0.0"
   },
@@ -16,7 +16,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "sample": "browserify -t babelify sample.js -o dist/sample.js",
-    "build": "browserify -t babelify src/DataActionBinder.js -o dist/DataActionBinder.js"
+    "build": "babel src -d dist/"
   },
   "repository": {
     "type": "git",
